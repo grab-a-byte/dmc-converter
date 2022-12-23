@@ -8,10 +8,6 @@ import (
 	"parkeradam.dev/dmc-convert/controllers"
 )
 
-type rgbInput struct {
-	Values []string `json:"values"`
-}
-
 func main() {
 	r := gin.Default()
 	r.Use(cors.Default())

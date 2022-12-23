@@ -19,7 +19,7 @@ func MapCommaSeperatedLinesToColors(inputs []string) []color.RGBA {
 }
 
 func MapSpaceSeperatedLinesToColors(inputs []string) []color.RGBA {
-	return mapMany(fromSpaceSepeartedLine, inputs)
+	return mapMany(fromSpaceSeparatedLine, inputs)
 }
 
 func subtractHighestFromLowest(i1, i2 uint8) int {
@@ -42,7 +42,7 @@ func parseToUint8(str string) uint8 {
 	return uint8(value)
 }
 
-func fromSpaceSepeartedLine(str string) color.RGBA {
+func fromSpaceSeparatedLine(str string) color.RGBA {
 	return fromLine(" ", str)
 }
 
