@@ -54,7 +54,7 @@ func main() {
 
 	for _, item := range colorsToConvert {
 		if colorType == "rgb" {
-			color := rgbcolor.FromSpaceSepeartedLine(item)
+			color := rgbcolor.FromSpaceSeparatedLine(item)
 			nearest := getClosest(dmcCols, color)
 			fmt.Println(nearest)
 		} else if colorType == "hex" {

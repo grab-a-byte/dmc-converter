@@ -29,7 +29,7 @@ func parseToUint8(str string) uint8 {
 	return uint8(value)
 }
 
-func FromSpaceSepeartedLine(str string) (col color.RGBA) {
+func FromSpaceSeparatedLine(str string) (col color.RGBA) {
 	segments := strings.Split(str, " ")
 	col.R = parseToUint8(segments[0])
 	col.G = parseToUint8(segments[1])
