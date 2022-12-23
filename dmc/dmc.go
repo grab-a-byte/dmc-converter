@@ -27,10 +27,10 @@ func Get() []Dmc {
 }
 
 type Dmc struct {
-	Floss int
-	Name  string
-	Color color.RGBA
-	Hex   string
+	Floss int        `json:"floss"`
+	Name  string     `json:"name"`
+	Color color.RGBA `json:"color"`
+	Hex   string     `json:"hex"`
 }
 
 func GetClosest(col color.RGBA) Dmc {

@@ -30,7 +30,8 @@ func ParseHexColor(s string) (c color.RGBA, err error) {
 func MapManyHex(inputs []string) []color.RGBA {
 	var items []color.RGBA
 	for _, item := range inputs {
-		if col, err := ParseHexColor(item); err != nil {
+		col, err := ParseHexColor(item)
+		if err == nil {
 			items = append(items, col)
 		}
 	}
