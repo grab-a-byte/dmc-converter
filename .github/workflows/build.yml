@@ -26,16 +26,22 @@ jobs:
       - name : Download Deps
         run: go mod download
 
+      # - name: Install dependencies
+      #   run: |
+      #     go get .
+      #     go get example.com/octo-examplemodule
+      #     go get example.com/octo-examplemodule@v1.3.4
+
       - name: Build
         run: go build -v
 
       # - name: Test
       #   run: go test -v ./...
 
-      # - name: 📦 Upload Artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: my-artifact
-      #     path: path/to/artifact/world.txt
+      - name: 📦 Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-x86-dmc-convert
+          path: ./dmc-convert
 
       # https://github.com/flcdrg/VsShowMissing/blob/master/.github/workflows/main.yml
