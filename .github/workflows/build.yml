@@ -55,16 +55,20 @@ jobs:
 
   create-release:
     runs-on: ubuntu-latest
+    needs: [build-windows, build-linux]
     steps:
       - name: Download Artifact Release
         uses: actions/download-artifact@v3
-        with:
-          name: windows-x86-dmc-convert.exe
 
-      - name: Download Artifact Release
-        uses: actions/download-artifact@v3
-        with:
-          name: linux-x86-dmc-convert
+      # - name: Download Artifact Release
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: windows-x86-dmc-convert.exe
+
+      # - name: Download Artifact Release
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: linux-x86-dmc-convert
 
       - name: Release
         uses: softprops/action-gh-release@v1

@@ -1,6 +1,8 @@
 # dmc-converter
 
 [![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)](https://go.dev/)
+[![Go package](https://github.com/parkeradam/dmc-converter/actions/workflows/build.yml/badge.svg)](https://github.com/parkeradam/dmc-converter/actions/workflows/build.yml)
+[![.github/workflows/build-container.yml](https://github.com/parkeradam/dmc-converter/actions/workflows/build-container.yml/badge.svg)](https://github.com/parkeradam/dmc-converter/actions/workflows/build-container.yml)
 
 API application for converting a list of Hex or RGB values into the closest DMC colors available.
 
