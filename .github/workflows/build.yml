@@ -7,12 +7,8 @@ on:
 
   workflow_dispatch:
 
-# permissions:
-#   contents: write
-
 jobs:
-  build:
-
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -26,17 +22,8 @@ jobs:
       - name : Download Deps
         run: go mod download
 
-      # - name: Install dependencies
-      #   run: |
-      #     go get .
-      #     go get example.com/octo-examplemodule
-      #     go get example.com/octo-examplemodule@v1.3.4
-
       - name: Build
         run: go build -v
-
-      # - name: Test
-      #   run: go test -v ./...
 
       - name: 📦 Upload Artifact
         uses: actions/upload-artifact@v3
@@ -44,4 +31,25 @@ jobs:
           name: linux-x86-dmc-convert
           path: ./dmc-convert
 
-      # https://github.com/flcdrg/VsShowMissing/blob/master/.github/workflows/main.yml
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name : Download Deps
+        run: go mod download
+
+      - name: Build
+        run: go build -v
+
+      - name: 📦 Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-x86-dmc-convert
+          path: ./dmc-convert.exe
