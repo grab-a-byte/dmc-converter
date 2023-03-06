@@ -1,5 +1,7 @@
 # dmc-converter
 
+[![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)](https://go.dev/)
+
 API application for converting a list of Hex or RGB values into the closest DMC colors available.
 
 ## TODO List
