@@ -10,3 +10,18 @@ API application for converting a list of Hex or RGB values into the closest DMC 
 
 ----
 This project has been used as a way to learn the go programming language and its idioms. If you have any issues with the project or wish to contribute, please give reasons why to teach me and help me learn, would be much appreciated.
+
+## Endpoints
+### GET
+http://localhost:8080/dmc/get <- Get all DMC colours
+
+### POST
+http://localhost:8080/dmc/submit <- Submit DMC colours with payload
+```
+{
+    "inputType":"csv",
+    "inputs":["1,2,3"]
+}
+````
+
+csv, hex and space seperated are allowed
