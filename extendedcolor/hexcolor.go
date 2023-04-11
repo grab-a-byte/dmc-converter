@@ -1,4 +1,4 @@
-package rgbcolor
+package extendedcolor
 
 import (
 	"fmt"
@@ -25,4 +25,16 @@ func ParseHexColor(s string) (c color.RGBA, err error) {
 
 	}
 	return
+}
+
+func MapManyHex(inputs []string) []color.RGBA {
+	var items []color.RGBA
+	for _, item := range inputs {
+		col, err := ParseHexColor(item)
+		if err == nil {
+			items = append(items, col)
+		}
+	}
+
+	return items
 }

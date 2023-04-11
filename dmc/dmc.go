@@ -1,18 +1,52 @@
 package dmc
 
 import (
+	_ "embed"
 	"image/color"
+	"math"
 	"strconv"
 	"strings"
 
-	"parkeradam.dev/dmc-convert/rgbcolor"
+	"parkeradam.dev/dmc-convert/extendedcolor"
 )
+
+//go:embed dmc_colors.csv
+var dmc_colors_str string
+
+var dmcCols []Dmc
+
+func init() {
+	var dmcLines []string = strings.Split(strings.ReplaceAll(dmc_colors_str, "\r\n", "\n"), "\n")
+	for _, item := range dmcLines {
+		dmcCols = append(dmcCols, fromCsvLine(item))
+	}
+}
+
+func Get() []Dmc {
+	return dmcCols
+}
 
 type Dmc struct {
 	Floss int
 	Name  string
 	Color color.RGBA
 	Hex   string
+}
+
+func GetClosest(col color.RGBA) Dmc {
+
+	var currentDmc Dmc
+	lowest := math.MaxInt32
+
+	for _, item := range dmcCols {
+		diff := extendedcolor.Compare(item.Color, col)
+		if diff < lowest {
+			lowest = diff
+			currentDmc = item
+		}
+	}
+
+	return currentDmc
 }
 
 func trimAndConvertToUInt8(str string) uint8 {
@@ -24,7 +58,7 @@ func trimAndConvertToInt(str string) int {
 	return int(val)
 }
 
-func FromCsvLine(csvLine string) Dmc {
+func fromCsvLine(csvLine string) Dmc {
 	items := strings.Split(csvLine, ",")
 	dmc := Dmc{
 		Floss: trimAndConvertToInt(items[0]),
@@ -35,6 +69,6 @@ func FromCsvLine(csvLine string) Dmc {
 			B: trimAndConvertToUInt8(items[4]),
 		},
 	}
-	dmc.Hex = rgbcolor.HexFromRgbColor(dmc.Color)
+	dmc.Hex = extendedcolor.HexFromRgbColor(dmc.Color)
 	return dmc
 }
