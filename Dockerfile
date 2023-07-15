@@ -4,7 +4,8 @@ WORKDIR /app
 COPY go.mod ./
 RUN go mod download
 COPY . ./
-RUN go build ./cmd/main.go -o /build/dmc_convert
+RUN cd cmd
+RUN go build -o ../build/dmc_convert
 
 
 FROM alpine
