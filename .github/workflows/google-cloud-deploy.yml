@@ -1,28 +1,28 @@
-name: Create and publish GCP function
+# name: Create and publish GCP function
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  build-and-publish-to-gcp-function:
-    permissions:
-      contents: "read"
-      id-token: "write"
+# jobs:
+#   build-and-publish-to-gcp-function:
+#     permissions:
+#       contents: "read"
+#       id-token: "write"
 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: "actions/checkout@v3"
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: "actions/checkout@v3"
 
-      - id: "auth"
-        uses: "google-github-actions/auth@v1"
-        with:
-          workload_identity_provider: ${{ secrets.WORKLOAD_PROVIDER }}
-          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+#       - id: "auth"
+#         uses: "google-github-actions/auth@v1"
+#         with:
+#           workload_identity_provider: ${{ secrets.WORKLOAD_PROVIDER }}
+#           service_account: ${{ secrets.SERVICE_ACCOUNT }}
 
-      - id: "deploy"
-        uses: "google-github-actions/deploy-cloud-functions@v1"
-        with:
-          name: "dmc-api"
-          runtime: "go120"
+#       - id: "deploy"
+#         uses: "google-github-actions/deploy-cloud-functions@v1"
+#         with:
+#           name: "dmc-api"
+#           runtime: "go120"
