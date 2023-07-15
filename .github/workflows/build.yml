@@ -63,17 +63,17 @@ jobs:
       - name: Download Artifact Release
         uses: actions/download-artifact@v3
         with:
-          name: dmc-convert.exe
+          name: windows-x86-dmc-convert.exe
 
       - name: Download Artifact Release
         uses: actions/download-artifact@v3
         with:
-          name: dmc-convert
+          name: linux-x86-dmc-convert
 
       - name: Release
         uses: softprops/action-gh-release@v1
         # if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ./dmc-convert.exe
-            ./dmc-convert
+            ./windows-x86-dmc-convert.exe
+            ./linux-x86-dmc-convert
