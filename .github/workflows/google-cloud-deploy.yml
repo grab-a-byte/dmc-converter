@@ -1,3 +1,5 @@
+name: Create and publish GCP function
+
 on:
   push:
     branches:

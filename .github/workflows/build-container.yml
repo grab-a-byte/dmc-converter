@@ -1,3 +1,5 @@
+name: Create and publish conatainer
+
 on:
   push:
     branches:
